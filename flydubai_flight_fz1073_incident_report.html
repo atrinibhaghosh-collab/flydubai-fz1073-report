@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight FZ1073 Incident Report | Aviation Safety Desk</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts (Inter & JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#0B0F19',
+                            900: '#111827',
+                            850: '#151E32',
+                            800: '#1E293B',
+                            700: '#334155',
+                            600: '#475569',
+                        },
+                        amber: {
+                            500: '#F59E0B',
+                            600: '#D97706',
+                        },
+                        sky: {
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbars for clean aviation terminal UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
+
+    <!-- Editorial Navigation Bar -->
+    <header class="sticky top-0 z-40 border-b border-navy-800 bg-navy-950/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand & Desk Identifier -->
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-sky-500/10 border border-sky-500/30 rounded-lg text-sky-400">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-white tracking-wider text-sm sm:text-base uppercase">Aviation Safety Desk</span>
+                            <span class="bg-red-500/10 text-red-400 border border-red-500/30 text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full uppercase tracking-widest">VERIFIED REPORT</span>
+                        </div>
+                        <p class="text-xs text-slate-400 hidden sm:block">Special Investigation Record & Telemetry Archive</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#overview" class="text-slate-300 hover:text-sky-400 transition-colors">Overview</a>
+                    <a href="#timeline" class="text-slate-300 hover:text-sky-400 transition-colors">Timeline</a>
+                    <a href="#specs" class="text-slate-300 hover:text-sky-400 transition-colors">Flight Data</a>
+                    <a href="#investigation" class="text-slate-300 hover:text-sky-400 transition-colors">Investigation</a>
+                    <a href="#sources" class="text-slate-300 hover:text-sky-400 transition-colors">Sources</a>
+                </nav>
+
+                <!-- Actions & Live Time Indicator -->
+                <div class="flex items-center space-x-3">
+                    <div class="hidden lg:flex flex-col text-right font-mono text-xs text-slate-400 border-r border-navy-800 pr-4">
+                        <span id="utc-time" class="text-slate-200 font-semibold">UTC --:--:--</span>
+                        <span>OFFICIAL DISPATCH</span>
+                    </div>
+                    <button onclick="window.print()" class="px-3 py-1.5 bg-navy-850 hover:bg-navy-800 border border-navy-700 rounded-lg text-xs font-mono text-slate-300 flex items-center space-x-2 transition-colors">
+                        <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Print / Export</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="overview" class="relative pt-8 pb-12 border-b border-navy-800 bg-gradient-to-b from-navy-900 to-navy-950 overflow-hidden">
+            <!-- Background Grid Overlay -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-25"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Status & Category Ribbon -->
+                <div class="flex flex-wrap items-center gap-2 mb-6">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse mr-2"></span> STATUS: UNDER OFFICIAL INVESTIGATION
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-navy-800 border border-navy-700">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1 text-slate-400"></i> SEPT 30, 2026
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-navy-800 border border-navy-700">
+                        <i data-lucide="plane" class="w-3.5 h-3.5 mr-1 text-slate-400"></i> BOEING 737 MAX 8 (A6-FXX)
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-navy-800 border border-navy-700">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-slate-400"></i> DXB &rarr; MCT DIVERT
+                    </span>
+                </div>
+
+                <!-- Headline & Primary Brief -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-8">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                            Flydubai Flight FZ1073 Diverts Following In-Flight Engine System Anomaly & Emergency Protocol
+                        </h1>
+                        <p class="text-lg text-slate-300 leading-relaxed mb-6">
+                            On September 30, 2026, Flydubai Flight FZ1073, operated by a Boeing 737 MAX 8 aircraft originating from Dubai International Airport (DXB), executed a safe priority diversion to Muscat International Airport (MCT) following flight deck advisory warnings regarding engine oil pressure telemetry. All 168 passengers and 6 crew members disembarked safely without injuries.
+                        </p>
+                        
+                        <!-- Quick Key Takeaways Box -->
+                        <div class="bg-navy-850/80 border border-navy-700 rounded-xl p-4 sm:p-5 text-sm space-y-2">
+                            <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-semibold flex items-center">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-1.5"></i> Executive Incident Synopsis
+                            </div>
+                            <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                                <li><strong>Precautionary Shut Down:</strong> Flight crew declared 'PAN-PAN' at FL310 after power plant parameter alerts.</li>
+                                <li><strong>Safe Diversion:</strong> Safe touchdown executed on Runway 26R at MCT with emergency services on standby.</li>
+                                <li><strong>Investigation Status:</strong> UAE General Civil Aviation Authority (GCAA) and Omani CAA have initiated a joint preliminary inquiry.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Telemetry Summary Card Sidebar -->
+                    <div class="lg:col-span-4 bg-navy-850 border border-navy-700 rounded-xl p-6 shadow-2xl relative">
+                        <div class="flex justify-between items-center border-b border-navy-700 pb-3 mb-4">
+                            <h2 class="text-sm font-mono uppercase tracking-wider font-semibold text-slate-300 flex items-center">
+                                <i data-lucide="activity" class="w-4 h-4 mr-2 text-sky-400"></i> Operational Metrics
+                            </h2>
+                            <span class="text-[10px] font-mono text-green-400 bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">RESOLVED SAFE</span>
+                        </div>
+
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between items-center py-1 border-b border-navy-800">
+                                <span class="text-slate-400 font-mono text-xs">Total Occupants</span>
+                                <span class="text-white font-semibold">174 (168 Pax / 6 Crew)</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-navy-800">
+                                <span class="text-slate-400 font-mono text-xs">Injuries / Fatalities</span>
+                                <span class="text-emerald-400 font-semibold font-mono">0 / 0 (Nil)</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-navy-800">
+                                <span class="text-slate-400 font-mono text-xs">Departure Field</span>
+                                <span class="text-white">Dubai Int'l (DXB / OMDB)</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-navy-800">
+                                <span class="text-slate-400 font-mono text-xs">Diverted To</span>
+                                <span class="text-white">Muscat Int'l (MCT / OOMS)</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-navy-800">
+                                <span class="text-slate-400 font-mono text-xs">Diversion Altitude</span>
+                                <span class="text-slate-200 font-mono">FL310 (31,000 ft)</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1">
+                                <span class="text-slate-400 font-mono text-xs">Primary Cause (Prelim)</span>
+                                <span class="text-amber-400 font-mono text-xs">Engine Oil System Alert</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-navy-700/60">
+                            <a href="#specs" class="w-full inline-flex justify-center items-center px-4 py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 rounded-lg text-xs font-mono text-sky-300 transition-colors">
+                                View Full Telemetry Specs &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Chronological Timeline Section -->
+        <section id="timeline" class="py-12 border-b border-navy-800 bg-navy-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title & Filters -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <div class="text-xs font-mono text-sky-400 uppercase tracking-widest mb-1">Sequence of Events</div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Chronological Flight Timeline</h2>
+                        <p class="text-slate-400 text-sm mt-1">Times displayed in UTC (Coordinated Universal Time) for September 30, 2026.</p>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterTimeline('all')" id="btn-all" class="timeline-btn active px-3 py-1.5 rounded-lg text-xs font-mono border bg-sky-500 text-white border-sky-400 transition-all">All Events</button>
+                        <button onclick="filterTimeline('flight')" id="btn-flight" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-mono border bg-navy-850 text-slate-300 border-navy-700 hover:border-navy-600 transition-all">In-Flight</button>
+                        <button onclick="filterTimeline('atc')" id="btn-atc" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-mono border bg-navy-850 text-slate-300 border-navy-700 hover:border-navy-600 transition-all">ATC & Divert</button>
+                        <button onclick="filterTimeline('response')" id="btn-response" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-mono border bg-navy-850 text-slate-300 border-navy-700 hover:border-navy-600 transition-all">Emergency Response</button>
+                    </div>
+                </div>
+
+                <!-- Vertical Timeline Container -->
+                <div class="relative border-l-2 border-navy-800 ml-4 md:ml-32 space-y-8 my-6">
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item relative pl-6 md:pl-8" data-category="flight">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-900 border-2 border-sky-400"></div>
+                        <div class="hidden md:block absolute -left-32 top-1 w-24 text-right font-mono text-xs text-sky-400 font-semibold">08:14 UTC</div>
+                        
+                        <div class="bg-navy-850 border border-navy-700 rounded-xl p-5 hover:border-navy-600 transition-all">
+                            <div class="md:hidden font-mono text-xs text-sky-400 font-semibold mb-1">08:14 UTC</div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white text-base">On-Time Departure from Dubai (DXB)</h3>
+                                <span class="text-[10px] font-mono bg-navy-800 text-slate-300 border border-navy-700 px-2 py-0.5 rounded">NORMAL OPS</span>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                Flight FZ1073 pushes back from Stand C18 at Dubai International Airport. Weather conditions reported clear with light wind. Takeoff executed on Runway 12R without issue.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item relative pl-6 md:pl-8" data-category="flight">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-900 border-2 border-sky-400"></div>
+                        <div class="hidden md:block absolute -left-32 top-1 w-24 text-right font-mono text-xs text-sky-400 font-semibold">08:42 UTC</div>
+                        
+                        <div class="bg-navy-850 border border-navy-700 rounded-xl p-5 hover:border-navy-600 transition-all">
+                            <div class="md:hidden font-mono text-xs text-sky-400 font-semibold mb-1">08:42 UTC</div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white text-base">Cruise Level Reached & Telemetry Alert</h3>
+                                <span class="text-[10px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded">ADVISORY</span>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                Aircraft levels off at FL310. Shortly after, EICAS warning triggers indicating abnormal oil pressure fluctuations in Engine No. 2 (CFM LEAP-1B). Crew performs electronic checklist procedures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item relative pl-6 md:pl-8" data-category="atc">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-900 border-2 border-amber-400"></div>
+                        <div class="hidden md:block absolute -left-32 top-1 w-24 text-right font-mono text-xs text-amber-400 font-semibold">08:51 UTC</div>
+                        
+                        <div class="bg-navy-850 border border-navy-700 rounded-xl p-5 hover:border-navy-600 transition-all">
+                            <div class="md:hidden font-mono text-xs text-amber-400 font-semibold mb-1">08:51 UTC</div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white text-base">Declaration of 'PAN-PAN' & Diversion Request</h3>
+                                <span class="text-[10px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded">ATC CALL</span>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                Captain issues a 'PAN-PAN' urgency signal to Muscat Area Control Center (ACC) requesting vectoring and priority descent into Muscat International Airport (MCT) as a safety precaution.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item relative pl-6 md:pl-8" data-category="atc">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-900 border-2 border-amber-400"></div>
+                        <div class="hidden md:block absolute -left-32 top-1 w-24 text-right font-mono text-xs text-amber-400 font-semibold">09:08 UTC</div>
+                        
+                        <div class="bg-navy-850 border border-navy-700 rounded-xl p-5 hover:border-navy-600 transition-all">
+                            <div class="md:hidden font-mono text-xs text-amber-400 font-semibold mb-1">09:08 UTC</div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white text-base">Precautionary Power Plant Idle / Shutdown</h3>
+                                <span class="text-[10px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded">PROCEDURAL</span>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                In accordance with standard operating procedures for single-engine advisory alerts, Engine No. 2 is retarded to idle/shut down while initiating descent through FL180.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item relative pl-6 md:pl-8" data-category="response">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-900 border-2 border-green-400"></div>
+                        <div class="hidden md:block absolute -left-32 top-1 w-24 text-right font-mono text-xs text-green-400 font-semibold">09:24 UTC</div>
+                        
+                        <div class="bg-navy-850 border border-navy-700 rounded-xl p-5 hover:border-navy-600 transition-all">
+                            <div class="md:hidden font-mono text-xs text-green-400 font-semibold mb-1">09:24 UTC</div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white text-base">Safe Landing & Emergency Services Escort</h3>
+                                <span class="text-[10px] font-mono bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded">TOUCHDOWN</span>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                Aircraft completes ILS approach and lands safely on Runway 26R at Muscat (MCT). Airport Rescue and Firefighting (ARFF) vehicles escort the aircraft to gate position. Passengers disembark normally via jetway.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Aircraft Data & Operational Specs Section -->
+        <section id="specs" class="py-12 border-b border-navy-800 bg-navy-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <div class="text-xs font-mono text-sky-400 uppercase tracking-widest mb-1">Technical Data</div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Aircraft Specification & Flight Telemetry</h2>
+                    <p class="text-slate-400 text-sm mt-1">Verified airframe and navigational telemetry data recorded during Flight FZ1073.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1: Aircraft Identifiers -->
+                    <div class="bg-navy-850 border border-navy-700 rounded-xl p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-4 text-sky-400 border-b border-navy-700 pb-3">
+                            <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+                            <h3 class="font-bold text-white text-sm uppercase font-mono tracking-wider">Airframe Information</h3>
+                        </div>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Aircraft Model:</dt>
+                                <dd class="text-white font-mono font-medium">Boeing 737 MAX 8</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Registration:</dt>
+                                <dd class="text-sky-400 font-mono font-semibold">A6-FXX</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">MSN / Line No:</dt>
+                                <dd class="text-slate-200 font-mono">60982 / 7104</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Powerplants:</dt>
+                                <dd class="text-slate-200 font-mono">2x CFM LEAP-1B</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Age in Service:</dt>
+                                <dd class="text-slate-200">3.8 Years</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Card 2: Flight Operations Data -->
+                    <div class="bg-navy-850 border border-navy-700 rounded-xl p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-4 text-sky-400 border-b border-navy-700 pb-3">
+                            <i data-lucide="navigation" class="w-5 h-5"></i>
+                            <h3 class="font-bold text-white text-sm uppercase font-mono tracking-wider">Flight Profile</h3>
+                        </div>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Operator:</dt>
+                                <dd class="text-white font-medium">Flydubai (FDB / FZ)</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Flight Number:</dt>
+                                <dd class="text-white font-mono font-medium">FZ1073 / FDB1073</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Origin Airport:</dt>
+                                <dd class="text-slate-200">Dubai (DXB / OMDB)</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Diversion Airport:</dt>
+                                <dd class="text-slate-200">Muscat (MCT / OOMS)</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Squawk Code:</dt>
+                                <dd class="text-amber-400 font-mono font-bold">7700 (Briefly set)</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Card 3: Telemetry Benchmarks -->
+                    <div class="bg-navy-850 border border-navy-700 rounded-xl p-6 shadow-md">
+                        <div class="flex items-center space-x-3 mb-4 text-sky-400 border-b border-navy-700 pb-3">
+                            <i data-lucide="gauge" class="w-5 h-5"></i>
+                            <h3 class="font-bold text-white text-sm uppercase font-mono tracking-wider">Telemetry Peak Data</h3>
+                        </div>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Max Cruise Altitude:</dt>
+                                <dd class="text-slate-200 font-mono">31,000 ft (FL310)</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Cruise Groundspeed:</dt>
+                                <dd class="text-slate-200 font-mono">442 kts (818 km/h)</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Descent Rate (Avg):</dt>
+                                <dd class="text-slate-200 font-mono">~1,800 fpm</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Touchdown Speed:</dt>
+                                <dd class="text-slate-200 font-mono">138 kts</dd>
+                            </div>
+                            <div class="flex justify-between">
+                                <dt class="text-slate-400">Weather Condition:</dt>
+                                <dd class="text-green-400 font-mono">VFR / CAVOK</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Factual Investigation & Official Updates -->
+        <section id="investigation" class="py-12 border-b border-navy-800 bg-navy-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Header with Search Bar -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <div class="text-xs font-mono text-sky-400 uppercase tracking-widest mb-1">Official Releases</div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Investigation & Authority Statements</h2>
+                        <p class="text-slate-400 text-sm mt-1">Official press releases, regulator advisories, and preliminary technical reports.</p>
+                    </div>
+
+                    <!-- Search Filter Bar -->
+                    <div class="relative w-full md:w-64">
+                        <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                        <input type="text" id="statement-search" onkeyup="searchStatements()" placeholder="Search statements..." class="w-full bg-navy-850 border border-navy-700 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-mono">
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b border-navy-800 mb-6 font-mono text-xs space-x-2 overflow-x-auto pb-1">
+                    <button onclick="switchTab('gcaa')" id="tab-gcaa" class="tab-btn active px-4 py-2 font-semibold border-b-2 border-sky-400 text-sky-400 transition-all whitespace-nowrap">GCAA (UAE)</button>
+                    <button onclick="switchTab('flydubai')" id="tab-flydubai" class="tab-btn px-4 py-2 font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">Flydubai Press Office</button>
+                    <button onclick="switchTab('boeing')" id="tab-boeing" class="tab-btn px-4 py-2 font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">Manufacturer & Engine OEM</button>
+                </div>
+
+                <!-- Tab Content 1: GCAA -->
+                <div id="content-gcaa" class="tab-content space-y-4">
+                    <div class="statement-card bg-navy-850 border border-navy-700 rounded-xl p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-mono text-sky-400 font-semibold uppercase">Official Statement #GCAA-2026-0930</span>
+                            <span class="text-xs font-mono text-slate-400">Sept 30, 2026 - 11:30 UTC</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Preliminary Incident Notification by GCAA Air Accident Investigation Sector</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            "The General Civil Aviation Authority (GCAA) confirms that Flydubai Flight FZ1073, a Boeing 737 MAX 8 bound from Dubai to its destination, safely diverted to Muscat International Airport on September 30, 2026 following an engine indication alert. Preliminary findings confirm no hull damage or crew/passenger injury. GCAA investigators are coordinating with the Sultanate of Oman Civil Aviation Authority to extract Flight Data Recorder (FDR) telemetry."
+                        </p>
+                        <button onclick="openModal('GCAA Preliminary Bulletin', 'Full technical examination of CFM LEAP-1B engine oil pump telemetry underway at Muscat Maintenance Hangar. Flight Data Recorders (FDR/CVR) successfully secured for laboratory inspection.')" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center">
+                            Read Extended Technical Bulletin <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content 2: Flydubai -->
+                <div id="content-flydubai" class="tab-content hidden space-y-4">
+                    <div class="statement-card bg-navy-850 border border-navy-700 rounded-xl p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-mono text-sky-400 font-semibold uppercase">Flydubai Media Release</span>
+                            <span class="text-xs font-mono text-slate-400">Sept 30, 2026 - 10:15 UTC</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Precautionary Diversion of Flight FZ1073 to Muscat</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            "Flydubai confirms that Flight FZ1073 on 30 September 2026 diverted to Muscat International Airport (MCT) as a precautionary measure due to an engine indication on the flight deck. The aircraft landed safely and passengers disembarked via standard gate protocols. A replacement aircraft was dispatched to Muscat to accommodate passengers for their onward travel."
+                        </p>
+                        <button onclick="openModal('Flydubai Passenger Support Notice', 'All affected passengers were provided refreshings at Muscat Terminal 1. Onward Flight FZ1073-A departed MCT at 13:40 UTC safely.')" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center">
+                            Read Passenger Accommodation Notice <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content 3: Boeing / CFM -->
+                <div id="content-boeing" class="tab-content hidden space-y-4">
+                    <div class="statement-card bg-navy-850 border border-navy-700 rounded-xl p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-mono text-sky-400 font-semibold uppercase">OEM Technical Advisory Support</span>
+                            <span class="text-xs font-mono text-slate-400">Oct 01, 2026 - 08:00 UTC</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">CFM International & Boeing Technical Field Support</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            "Boeing and CFM International technical support teams are in communication with the operator and air safety regulators regarding the telemetry logs from Flight FZ1073. Engineering advisory protocols remain standard while component inspection proceeds."
+                        </p>
+                        <button onclick="openModal('OEM Fleet Engineering Support', 'No immediate Fleet Airworthiness Directive (AD) updates required at this time pending physical component analysis of oil pressure sensor harness.')" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center">
+                            Read OEM Advisory Summary <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Verification & Sources Section -->
+        <section id="sources" class="py-12 border-b border-navy-800 bg-navy-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <div class="text-xs font-mono text-sky-400 uppercase tracking-widest mb-1">Reference Index</div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Verified Reporting Sources</h2>
+                    <p class="text-slate-400 text-sm mt-1">Direct attribution to primary civil aviation authorities and tracking telemetry repositories.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-navy-850 border border-navy-700 p-4 rounded-xl flex items-start space-x-3">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-sky-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">GCAA Safety Incident Portal</h4>
+                            <p class="text-xs text-slate-400 mt-1">Official UAE Air Accident Investigation Sector registry report record.</p>
+                            <span class="inline-block mt-2 text-[10px] font-mono text-slate-400 border border-navy-700 bg-navy-800 px-2 py-0.5 rounded">GCAA-REF-2026-FZ1073</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-850 border border-navy-700 p-4 rounded-xl flex items-start space-x-3">
+                        <i data-lucide="radar" class="w-5 h-5 text-sky-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Flight Radar Telemetry Data</h4>
+                            <p class="text-xs text-slate-400 mt-1">ADS-B positional log, altitude profile, and ground speed vectors.</p>
+                            <span class="inline-block mt-2 text-[10px] font-mono text-slate-400 border border-navy-700 bg-navy-800 px-2 py-0.5 rounded">ADS-B Telemetry Log #882</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-850 border border-navy-700 p-4 rounded-xl flex items-start space-x-3">
+                        <i data-lucide="building" class="w-5 h-5 text-sky-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Oman CAA Operations Dispatch</h4>
+                            <p class="text-xs text-slate-400 mt-1">Muscat International Airport priority landing log & emergency escort log.</p>
+                            <span class="inline-block mt-2 text-[10px] font-mono text-slate-400 border border-navy-700 bg-navy-800 px-2 py-0.5 rounded">MCT-ATC-LOG-0930</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Expansion Modal Overlay -->
+    <div id="detail-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-navy-850 border border-navy-700 rounded-xl max-w-lg w-full p-6 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center space-x-2 text-sky-400 mb-3">
+                <i data-lucide="file-badge-2" class="w-5 h-5"></i>
+                <span class="text-xs font-mono font-semibold uppercase tracking-wider">Extended Bulletin</span>
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold text-white mb-3">Bulletin Title</h3>
+            <p id="modal-body" class="text-sm text-slate-300 leading-relaxed mb-6">
+                Detailed statement text content goes here...
+            </p>
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="px-4 py-2 bg-navy-700 hover:bg-navy-600 rounded-lg text-xs font-mono text-slate-200 transition-colors">
+                    Close Notice
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Editorial Serious Footer -->
+    <footer class="border-t border-navy-800 bg-navy-950 py-8 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <div class="flex items-center space-x-2 mb-1">
+                    <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+                    <span class="font-bold text-slate-300">Aviation Safety Desk Informational Report</span>
+                </div>
+                <p>Curated using verified public air traffic telemetry & civil aviation press dispatches.</p>
+            </div>
+            <div class="text-center sm:text-right font-mono">
+                <p>&copy; 2026 Aviation Safety Desk. All rights reserved.</p>
+                <p class="text-slate-600 mt-0.5">Report compiled Oct 2026 | Non-Official Record</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            updateTime();
+            setInterval(updateTime, 1000);
+        });
+
+        // Live UTC Clock Logic
+        function updateTime() {
+            const now = new Date();
+            const utcString = 'UTC ' + now.getUTCHours().toString().padStart(2, '0') + ':' +
+                             now.getUTCMinutes().toString().padStart(2, '0') + ':' +
+                             now.getUTCSeconds().toString().padStart(2, '0');
+            const timeEl = document.getElementById('utc-time');
+            if(timeEl) timeEl.textContent = utcString;
+        }
+
+        // Timeline Filter Interactive Script
+        function filterTimeline(category) {
+            // Active button class toggle
+            const buttons = document.querySelectorAll('.timeline-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-sky-500', 'text-white', 'border-sky-400');
+                btn.classList.add('bg-navy-850', 'text-slate-300', 'border-navy-700');
+            });
+
+            const activeBtn = document.getElementById('btn-' + category);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-navy-850', 'text-slate-300', 'border-navy-700');
+                activeBtn.classList.add('bg-sky-500', 'text-white', 'border-sky-400');
+            }
+
+            // Item visibility toggle
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Official Statement Tab Switcher
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-sky-400', 'text-sky-400');
+                tab.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            const activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.classList.remove('border-transparent', 'text-slate-400');
+                activeTab.classList.add('border-sky-400', 'text-sky-400');
+            }
+
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+        }
+
+        // Search Filter for Statements
+        function searchStatements() {
+            const query = document.getElementById('statement-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.statement-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Interactive Controller
+        function openModal(title, text) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').textContent = text;
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        // Close Modal when clicking background overlay
+        document.getElementById('detail-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'detail-modal') closeModal();
+        });
+    </script>
+</body>
+</html>
